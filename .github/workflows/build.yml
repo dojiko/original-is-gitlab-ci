@@ -1,0 +1,22 @@
+---
+name: build
+jobs:
+  build:
+    container:
+      image: ruby:2.4.2
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: before_install
+      run: bundle install
+    - name: before_script
+      run: bundle install
+    - name: script
+      run: bundle exec rspec
+'on':
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
